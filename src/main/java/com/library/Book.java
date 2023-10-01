@@ -1,22 +1,23 @@
 package com.library;
 
+import java.util.UUID;
+
 public class Book {
+    private UUID bookID;
     private String title;
     private String author;
     private String isbn;
     private boolean checkedOut;
 
     public Book(String title, String author, String isbn) {
+        this.bookID = UUID.randomUUID(); // Generates a random UUID
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.checkedOut = false;
     }
 
-    public Book() {
-    }
-
-    // Getter and setter methods
+    // Getter and setter methods for other fields
     public String getTitle() {
         return title;
     }
@@ -35,6 +36,11 @@ public class Book {
 
     public void setCheckedOut(boolean checkedOut) {
         this.checkedOut = checkedOut;
+    }
+
+    // Getter method for bookID
+    public UUID getBookID() {
+        return bookID;
     }
 
     public void checkOut() {
@@ -57,6 +63,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Title: " + title + ", Author: " + author + ", ISBN: " + isbn + ", Checked Out: " + checkedOut;
+        return "Book ID: " + bookID.toString() + ", Title: " + title + ", Author: " + author + ", ISBN: " + isbn
+                + ", Checked Out: " + checkedOut;
     }
 }
